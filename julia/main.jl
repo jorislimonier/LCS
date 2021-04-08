@@ -3,8 +3,10 @@ using .SeqMod
 using Random
 using StatsBase
 using DataFrames
+using Plotly
 
 function generate_sequence(seq::SeqMod.Sequence)
+    # creates a sequence given 
     sample(seq.char, seq.len)
 end
 
@@ -29,6 +31,7 @@ function lcs_table(X, Y)
 end
 
 function lcs_from_table(T)
+    # get the lcs after computing the table
     m = size(T)[1]
     n = size(T)[2]
 
@@ -60,6 +63,7 @@ function get_lcs_length(seq_length, char)
 end
 
 function append_lcs_length(results_dict, seq_length, char)
+    # creates new key in results_dict if necessary, then appends lcs results
     if  !(seq_length in keys(results_dict))
         results_dict[seq_length] = zeros(0)
     end
@@ -67,11 +71,27 @@ function append_lcs_length(results_dict, seq_length, char)
 end
 
 lcs_results = Dict()
-for l in 20:10:50
+for l in 100:200:1000
     typeof("type of l is $l")
-    for _ in 1:1000
+    for _ in 1:100
         append_lcs_length(lcs_results, l, [0, 1])
     end
 end
 lcs_results
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
