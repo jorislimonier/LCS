@@ -50,12 +50,28 @@ function lcs_from_table(T)
     return lcs
 end
 
-len = 10
-char = [0, 1]
-X = generate_sequence(SeqMod.Sequence(len, char))
-Y = generate_sequence(SeqMod.Sequence(len, char))
-println("  X: ", X)
-println("  Y: ", Y)
-T = lcs_table(X, Y)
-display(T)
-lcs = println(lcs_from_table(T))
+function get_lcs_length(seq_length, char)
+    # returns the length of the lcs between random sequences of length seq_length, having characters char
+    X = generate_sequence(SeqMod.Sequence(seq_length, char))
+    Y = generate_sequence(SeqMod.Sequence(seq_length, char))    
+    T = lcs_table(X, Y)
+    lcs = lcs_from_table(T)
+    return length(lcs)
+end
+
+function append_lcs_length(results_dict, seq_length, char)
+    if  !(seq_length in keys(results_dict))
+        results_dict[seq_length] = zeros(0)
+    end
+    append!(results_dict[seq_length], get_lcs_length(seq_length, char))
+end
+
+lcs_results = Dict()
+for l in 20:10:50
+    typeof("type of l is $l")
+    for _ in 1:1000
+        append_lcs_length(lcs_results, l, [0, 1])
+    end
+end
+lcs_results
+
