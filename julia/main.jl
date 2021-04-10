@@ -1,20 +1,12 @@
 include("Sequences.jl")
-include("PlotlyJS.jl")
-include("Gadfly.jl")
+include("PlotlyJS_plots.jl")
+include("Gadfly_plots.jl")
 
 
 # plots
 ## plot all given averages
-res = Sequences.lcs_average_lengths_comparison(100:100:500, 100)
-PlotlyJS.average_lcs_length(res)
+res = Sequences.lcs_average_lengths_comparison(100:100:300, 100)
 
-# continue with moving averages
-sorted_keys = sort([collect(res)[i][1] for i in 1:length(res)])
-moving_averages = Dict()
-for key in sorted_keys
-    all_lengths = res[key]
-    for i in 1:length(all_lengths)
-        println(len)
-    end
-end
+moving_averages = Sequences.compute_moving_averages(res)
+Gadfly_plots.plot_moving_averages(moving_averages)
 

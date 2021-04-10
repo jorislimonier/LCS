@@ -88,5 +88,20 @@ function lcs_average_lengths_comparison(range, repeats)
     return lcs_results
 end
 
+function compute_moving_averages(res)
+    # compute moving averages
+    sorted_keys = sort([collect(res)[i][1] for i in 1:length(res)])
+    moving_averages = Dict()
+    for key in sorted_keys
+        moving_averages[key] = []
+        all_lengths = res[key]
+        for i in 1:length(all_lengths)
+            append!(moving_averages[key], mean(all_lengths[1:i]))
+        end
+    end
+    
+    return moving_averages
+end
+
 end
 
