@@ -6,9 +6,10 @@ function plot_moving_averages(ma, key)
         # Theme(point_size=5mm)
         pl = plot(
             y=ma[key],
+            Guide.title("$key"),
             Geom.line,
-            Geom.point,
-            size=[.7mm]
+            # Geom.point,
+            # size=[.7mm]
         )
         return pl
     else

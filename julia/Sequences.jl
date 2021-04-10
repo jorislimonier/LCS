@@ -1,6 +1,6 @@
 module Sequences
 using Random
-Random.seed!(42)
+# Random.seed!(42)
 mutable struct Sequence
     len::Int
     char::Array{Any}
@@ -80,7 +80,7 @@ function lcs_average_lengths_comparison(range, repeats)
     # get lcs length on multiple runs
     lcs_results = Dict()
     for l in range
-        println(l)
+        println("key: $l")
         for _ in 1:repeats
             append_lcs_length(lcs_results, l, [0, 1])
         end
