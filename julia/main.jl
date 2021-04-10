@@ -8,5 +8,4 @@ include("Gadfly_plots.jl")
 res = Sequences.lcs_average_lengths_comparison(100:100:300, 100)
 
 moving_averages = Sequences.compute_moving_averages(res)
-Gadfly_plots.plot_moving_averages(moving_averages)
-
+Gadfly_plots.plot_moving_averages(moving_averages, 200)
