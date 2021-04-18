@@ -59,8 +59,9 @@ function lcs_from_table(X, Y, T)
     return lcs
 end
 
+"""returns the length of the lcs between random
+sequences of length seq_length, having characters char"""
 function get_lcs_length(seq_length, char)
-    # returns the length of the lcs between random sequences of length seq_length, having characters char
     X = generate_sequence(Sequence(seq_length, char))
     Y = generate_sequence(Sequence(seq_length, char))    
     T = lcs_table(X, Y)
@@ -68,40 +69,30 @@ function get_lcs_length(seq_length, char)
     return length(lcs)
 end
 
-function append_lcs_length(results_dict, seq_length, char)
-    # creates new key in results_dict if necessary, then appends lcs results
-    if  !(seq_length in keys(results_dict))
-        results_dict[seq_length] = zeros(0)
-    end
-    append!(results_dict[seq_length], get_lcs_length(seq_length, char))
-end
-
-function lcs_average_lengths_comparison(range, repeats)
-    # get lcs length on multiple runs
-    lcs_results = Dict()
-    for l in range
-        println("key: $l")
-        for _ in 1:repeats
-            append_lcs_length(lcs_results, l, [0, 1])
-        end
+"get lcs length on `runs` runs"
+function multiple_lcs_lengths(seq_length, runs)
+    lcs_results = []
+    for _ in 1:runs
+        append!(lcs_results, get_lcs_length(seq_length, [0, 1]))
     end
     return lcs_results
 end
 
-function compute_moving_averages(res)
-    # compute moving averages
-    sorted_keys = sort([collect(res)[i][1] for i in 1:length(res)])
-    moving_averages = Dict()
-    for key in sorted_keys
-        moving_averages[key] = []
-        all_lengths = res[key]
-        for i in 1:length(all_lengths)
-            append!(moving_averages[key], mean(all_lengths[1:i]))
-        end
+"compute moving averages"
+function moving_averages(results)
+    moving_averages = []
+    for i in 1:length(results)
+        append!(moving_averages, mean(results[1:i]))
     end
-    
     return moving_averages
 end
 
+"returns for each sequence length in
+`seq_lengths` the average lcs length"
+function compare_lcs_averages(seq_lengths, runs)
+    return Dict(len => mean(multiple_lcs_lengths(len, runs)) for len in seq_lengths)
+end
+
+# end module
 end
 
