@@ -18,5 +18,4 @@ function plot_moving_averages(ma, seq_length)
 
 end
 
-
 end

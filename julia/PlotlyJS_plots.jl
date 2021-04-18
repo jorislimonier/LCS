@@ -1,21 +1,16 @@
-module PlotlyJS
+module PlotlyJS_plots
 
 using PlotlyJS, DataFrames, CSV, Dates, Statistics
 
 
-function average_lcs_length(res)
+function average_lcs_length(moving_averages, seq_length)
     plot = Plot()
-    sorted_keys = sort([collect(res)[i][1] for i in 1:length(res)])
-    for key in sorted_keys
-        println(key)
-        trace = scatter(
-            x=[key],
-            y=[mean(res[key])],
-            mode="markers",
-            name=key
-        )
-        addtraces!(plot, trace)
-    end
+    trace = scatter(
+        x=seq_length,
+        y=moving_averages,
+        mode="lines",
+    )
+    addtraces!(plot, trace)
     return plot
 end
 

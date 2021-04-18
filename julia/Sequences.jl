@@ -59,9 +59,9 @@ function lcs_from_table(X, Y, T)
     return lcs
 end
 
+"""returns the length of the lcs between random
+sequences of length seq_length, having characters char"""
 function get_lcs_length(seq_length, char)
-    """returns the length of the lcs between random
-    sequences of length seq_length, having characters char"""
     X = generate_sequence(Sequence(seq_length, char))
     Y = generate_sequence(Sequence(seq_length, char))    
     T = lcs_table(X, Y)
@@ -69,15 +69,7 @@ function get_lcs_length(seq_length, char)
     return length(lcs)
 end
 
-# function append_lcs_length(results_dict, seq_length, char)
-#     # creates new key in results_dict if necessary, then appends lcs results
-#     if  !(seq_length in keys(results_dict))
-#         results_dict[seq_length] = zeros(0)
-#     end
-#     append!(results_dict[seq_length], get_lcs_length(seq_length, char))
-# end
-
-function lcs_average_lengths_comparison(seq_length, repeats)
+function multiple_lcs_lengths(seq_length, repeats)
     # get lcs length on repeats runs
     lcs_results = []
     for _ in 1:repeats
@@ -88,14 +80,10 @@ end
 
 function compute_moving_averages(results)
     # compute moving averages
-    # sorted_keys = sort([collect(results)[i][1] for i in 1:length(results)])
     moving_averages = []
-    # for key in sorted_keys
-    # moving_averages[key] = []
     for i in 1:length(results)
         append!(moving_averages, mean(results[1:i]))
     end
-    # end
     return moving_averages
 end
 
