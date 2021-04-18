@@ -1,4 +1,4 @@
-module Gadfly_plots
+module GadflyPlots
 using Gadfly
 
 function plot_moving_averages(ma, seq_length)

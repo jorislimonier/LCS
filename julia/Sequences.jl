@@ -69,17 +69,17 @@ function get_lcs_length(seq_length, char)
     return length(lcs)
 end
 
-function multiple_lcs_lengths(seq_length, repeats)
-    # get lcs length on repeats runs
+"get lcs length on `runs` runs"
+function multiple_lcs_lengths(seq_length, runs)
     lcs_results = []
-    for _ in 1:repeats
+    for _ in 1:runs
         append!(lcs_results, get_lcs_length(seq_length, [0, 1]))
     end
     return lcs_results
 end
 
-function compute_moving_averages(results)
-    # compute moving averages
+"compute moving averages"
+function moving_averages(results)
     moving_averages = []
     for i in 1:length(results)
         append!(moving_averages, mean(results[1:i]))
@@ -87,5 +87,12 @@ function compute_moving_averages(results)
     return moving_averages
 end
 
+"returns for each sequence length in
+`seq_lengths` the average lcs length"
+function compare_lcs_averages(seq_lengths, runs)
+    return Dict(len => mean(multiple_lcs_lengths(len, runs)) for len in seq_lengths)
+end
+
+# end module
 end
 
