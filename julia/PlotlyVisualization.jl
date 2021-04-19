@@ -10,8 +10,8 @@ function average_lcs_length(moving_averages, seq_length)
     return plot
 end
 
-function plot_average_lengths(seq_lengths, runs)
-    results = Sequences.compare_lcs_averages(seq_lengths, runs)
+function plot_average_lengths(seq_lengths, runs, nb_chars)
+    results = Sequences.compare_lcs_averages(seq_lengths, runs, nb_chars)
     plot = Plot()
     sorted_keys = sort(collect(keys(results)))
     y = [results[key] for key in sorted_keys]

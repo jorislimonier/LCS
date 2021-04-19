@@ -70,10 +70,10 @@ function get_lcs_length(seq_length, char)
 end
 
 "get lcs length on `runs` runs"
-function multiple_lcs_lengths(seq_length, runs)
+function multiple_lcs_lengths(seq_length, runs, nb_chars)
     lcs_results = []
     for _ in 1:runs
-        append!(lcs_results, get_lcs_length(seq_length, [0, 1]))
+        append!(lcs_results, get_lcs_length(seq_length, collect(1:nb_chars)))
     end
     return lcs_results
 end
@@ -89,8 +89,8 @@ end
 
 "returns for each sequence length in
 `seq_lengths` the average lcs length"
-function compare_lcs_averages(seq_lengths, runs)
-    return Dict(len => mean(multiple_lcs_lengths(len, runs)) for len in seq_lengths)
+function compare_lcs_averages(seq_lengths, runs, nb_chars)
+    return Dict(len => mean(multiple_lcs_lengths(len, runs, nb_chars)) for len in seq_lengths)
 end
 
 # end module
