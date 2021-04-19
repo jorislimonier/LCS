@@ -1,6 +1,6 @@
 module PlotlyVisualization
 
-using PlotlyJS, DataFrames, CSV, Dates, Statistics
+using PlotlyJS
 include("Sequences.jl")
 
 function average_lcs_length(moving_averages, seq_length)
@@ -10,15 +10,15 @@ function average_lcs_length(moving_averages, seq_length)
     return plot
 end
 
-function plot_average_lengths(seq_lengths, runs)
-    results = Sequences.compare_lcs_averages(seq_lengths, runs)
+function plot_average_lengths(lcs_averages)
     plot = Plot()
-    sorted_keys = sort(collect(keys(results)))
-    y = [results[key] for key in sorted_keys]
+    sorted_keys = sort(collect(keys(lcs_averages)))
+    y = [lcs_averages[key] for key in sorted_keys]
 
     plot = Plot()
     addtraces!(plot, scatter(x=sorted_keys, y=y; name="average_length"))
-    addtraces!(plot, scatter(x=1:last(sorted_keys), y=[4*x / 5 for x in 1:last(sorted_keys)], opacity=.8, name="y = 4x/5"))
+    slope = Sequences.nbchar_slope(lcs_averages)
+    addtraces!(plot, scatter(x=1:last(sorted_keys), y=[slope*x for x in 1:last(sorted_keys)], opacity=.8, name="slope $(round(slope, digits=3))"))
     return plot
 end
 

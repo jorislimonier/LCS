@@ -1,23 +1,20 @@
 module Sequences
-using Random
 # Random.seed!(42)
 mutable struct Sequence
     len::Int
     char::Array{Any}
 end
 
-using Random
 using StatsBase
 using DataFrames
-using Plotly
 
+"creates a sequence given" 
 function generate_sequence(seq::Sequence)
-    # creates a sequence given 
     sample(seq.char, seq.len)
 end
 
+"make table"
 function lcs_table(X, Y)
-    # make table
     m = length(X)
     n = length(Y)
     T = zeros(Int, m + 1, n + 1)
@@ -36,8 +33,8 @@ function lcs_table(X, Y)
     return T
 end
 
+"get the lcs after computing the table"
 function lcs_from_table(X, Y, T)
-    # get the lcs after computing the table
     m = size(T)[1]
     n = size(T)[2]
 
@@ -70,10 +67,10 @@ function get_lcs_length(seq_length, char)
 end
 
 "get lcs length on `runs` runs"
-function multiple_lcs_lengths(seq_length, runs)
+function multiple_lcs_lengths(seq_length, runs, nb_chars)
     lcs_results = []
     for _ in 1:runs
-        append!(lcs_results, get_lcs_length(seq_length, [0, 1]))
+        append!(lcs_results, get_lcs_length(seq_length, collect(1:nb_chars)))
     end
     return lcs_results
 end
@@ -89,8 +86,18 @@ end
 
 "returns for each sequence length in
 `seq_lengths` the average lcs length"
-function compare_lcs_averages(seq_lengths, runs)
-    return Dict(len => mean(multiple_lcs_lengths(len, runs)) for len in seq_lengths)
+function compare_lcs_averages(seq_lengths, runs, nb_chars)
+    return Dict(len => mean(multiple_lcs_lengths(len, runs, nb_chars)) for len in seq_lengths)
+end
+
+"gets slope "
+function nbchar_slope(lcs_averages)
+    ratios = []
+    for key in keys(lcs_averages)
+        key == 0 && continue
+        append!(ratios, lcs_averages[key] / key)
+    end
+    return mean(ratios)
 end
 
 # end module
