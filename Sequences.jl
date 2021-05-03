@@ -8,7 +8,10 @@ end
 using StatsBase
 using DataFrames
 
-"creates a sequence given" 
+"""
+creates a sequence given
+characters and a sequence length
+""" 
 function generate_sequence(seq::Sequence)
     sample(seq.char, seq.len)
 end
