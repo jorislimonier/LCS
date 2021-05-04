@@ -22,5 +22,10 @@ function plot_average_lengths(lcs_averages)
     return plot
 end
 
+function plot_normal()
+
+
+end
+
 # end module
 end
