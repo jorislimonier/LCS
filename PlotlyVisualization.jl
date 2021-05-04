@@ -22,8 +22,13 @@ function plot_average_lengths(lcs_averages)
     return plot
 end
 
-function plot_normal()
-
+function plot_normal(mult_lcs_lengths)
+    lengths_occurences = Dict(lcs_length => count(l->l==lcs_length, mult_lcs_lengths) for lcs_length in unique(mult_lcs_lengths))
+    plot = Plot()
+    addtraces!(plot, histogram(x=mult_lcs_lengths))
+    # for (length, count) in lengths_occurences
+    # end
+    return plot
 
 end
 
