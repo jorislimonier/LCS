@@ -14,3 +14,5 @@ PlotlyVisualization.average_lcs_length(moving_averages, seq_length)
 
 # compare lcs averages
 plot_averages = PlotlyVisualization.plot_average_lengths(lcs_av)
+
+mult_lcs_lengths
