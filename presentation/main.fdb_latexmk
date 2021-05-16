@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1620989300 "/home/joris/Documents/uni/seminar2/presentation/main.tex" "/home/joris/Documents/uni/seminar2/presentation/main.pdf" "main" 1620989322
+["pdflatex"] 1620989300 "/home/joris/Documents/uni/seminar2/presentation/main.tex" "/home/joris/Documents/uni/seminar2/presentation/main.pdf" "main" 1620996064
   "/etc/texmf/web2c/texmf.cnf" 1615570918 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/joris/Documents/uni/seminar2/presentation/main.aux" 1620989301 5179 db353414c5102956d202183be0470bb0 ""
-  "/home/joris/Documents/uni/seminar2/presentation/main.tex" 1620989322 1853 7af8e9e458096cb6002d7d0c309bd049 ""
+  "/home/joris/Documents/uni/seminar2/presentation/main.tex" 1620996063 1853 7af8e9e458096cb6002d7d0c309bd049 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -208,15 +208,15 @@
   "main.aux" 1620989301 5179 db353414c5102956d202183be0470bb0 "pdflatex"
   "main.nav" 1620989301 3005 c837a3f34b473c42f551fd532d008e73 "pdflatex"
   "main.out" 1620989301 313 a9a6a477f23f74e85cadc71f303d03ad "pdflatex"
-  "main.tex" 1620989322 1853 7af8e9e458096cb6002d7d0c309bd049 ""
+  "main.tex" 1620996063 1853 7af8e9e458096cb6002d7d0c309bd049 ""
   "main.toc" 1620989301 306 7dc0d9549e6959498fa1e5aa4777726b "pdflatex"
   (generated)
-  "main.aux"
   "main.pdf"
-  "main.nav"
-  "main.log"
-  "main.snm"
   "/home/joris/Documents/uni/seminar2/presentation/main.pdf"
-  "main.out"
+  "main.log"
   "main.toc"
+  "main.out"
   "/home/joris/Documents/uni/seminar2/presentation/main.log"
+  "main.snm"
+  "main.aux"
+  "main.nav"
