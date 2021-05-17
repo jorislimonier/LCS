@@ -16,7 +16,7 @@ function ma_lcs_length(moving_averages, seq_length)
     )
     addtraces!(plot, trace)
     relayout!(plot, Layout(
-        title="LCS moving average over replicates"),
+        title="LCS moving average over multiple replicates"),
         xaxis=attr(title="Number of replicates"),
         yaxis=attr(title="Moving average"),
     )
@@ -46,7 +46,7 @@ function plot_average_lengths(lcs_averages)
     return plot
 end
 
-function lcs_length_distr(mult_lcs_lengths)
+function lcs_length_distr(mult_lcs_lengths, replicates)
     plot = Plot()
     hist = histogram(
         x=mult_lcs_lengths,
@@ -61,7 +61,7 @@ function lcs_length_distr(mult_lcs_lengths)
     )
     addtraces!(plot, hist_normal)
     layout = Layout(
-        title="Average LCS length comparison over multiple sequence lengths",
+        title="Distribution of LCS length for $replicates replicates",
         xaxis_title="LCS length",
         yaxis_title="Number of occurences",
         barmode="overlay"
