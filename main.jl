@@ -1,24 +1,19 @@
 include("Sequences.jl")
-include("PlotlyVisualization.jl")
+include("Visualization.jl")
 
 seq_length = 100
 seq_lengths = 0:50:200
-runs = 50
+runs = 100
 nb_chars = 2
 mult_lcs_lengths = Sequences.multiple_lcs_lengths(seq_length, runs, nb_chars)
 lcs_av = Sequences.compare_lcs_averages(seq_lengths, runs, nb_chars)
 
 # plot moving averages
 moving_averages = Sequences.moving_averages(mult_lcs_lengths)
-PlotlyVisualization.average_lcs_length(moving_averages, seq_length)
+# Visualization.ma_lcs_length(moving_averages, seq_length)
 
 # compare lcs averages
-plot_averages = PlotlyVisualization.plot_average_lengths(lcs_av)
+plot_averages = Visualization.plot_average_lengths(lcs_av)
 
-norm_plot = PlotlyVisualization.lcs_length_distr(mult_lcs_lengths)
-# for v in Dict(lcs_length => count(l->l==lcs_length, mult_lcs_lengths) for lcs_length in unique(mult_lcs_lengths))
-#     println(" --> ", v, " <-- ")
-# end
-
-norm_plot
+# norm_plot = Visualization.lcs_length_distr(mult_lcs_lengths)
 

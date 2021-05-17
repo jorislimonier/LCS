@@ -1,9 +1,9 @@
-module PlotlyVisualization
+module Visualization
 
 using PlotlyJS
 include("Sequences.jl")
 
-function average_lcs_length(moving_averages, seq_length)
+function ma_lcs_length(moving_averages, seq_length)
     plot = Plot()
     trace = scatter(
         x=seq_length, 
@@ -11,6 +11,11 @@ function average_lcs_length(moving_averages, seq_length)
         mode="lines", 
     )
     addtraces!(plot, trace)
+    relayout!(plot, Layout(
+        title="LCS moving average over runs"),
+        xaxis=attr(title="Number of runs"),
+        yaxis=attr(title="Moving average"),
+    )
     return plot
 end
 
@@ -33,11 +38,8 @@ function plot_average_lengths(lcs_averages)
 end
 
 function lcs_length_distr(mult_lcs_lengths)
-    # lengths_occurences = Dict(lcs_length => count(l -> l == lcs_length, mult_lcs_lengths) for lcs_length in unique(mult_lcs_lengths))
     plot = Plot()
     addtraces!(plot, histogram(x=mult_lcs_lengths, weights=3))
-    # for (length, count) in lengths_occurences
-    # end
     return plot
 
 end
