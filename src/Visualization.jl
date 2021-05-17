@@ -3,6 +3,10 @@ module Visualization
 using PlotlyJS
 include("Sequences.jl")
 
+"""
+returns a scatter plot of the
+moving average over replicates
+"""
 function ma_lcs_length(moving_averages, seq_length)
     plot = Plot()
     trace = scatter(
@@ -12,8 +16,8 @@ function ma_lcs_length(moving_averages, seq_length)
     )
     addtraces!(plot, trace)
     relayout!(plot, Layout(
-        title="LCS moving average over runs"),
-        xaxis=attr(title="Number of runs"),
+        title="LCS moving average over replicates"),
+        xaxis=attr(title="Number of replicates"),
         yaxis=attr(title="Moving average"),
     )
     return plot
