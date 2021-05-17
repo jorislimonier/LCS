@@ -1,12 +1,14 @@
 module Sequences
 # Random.seed!(42)
+
+using StatsBase
+using DataFrames
+using Distributions
+
 mutable struct Sequence
     len::Int
     char::Array{Any}
 end
-
-using StatsBase
-using DataFrames
 
 """
 creates a sequence given
@@ -69,16 +71,27 @@ function get_lcs_length(seq_length, char)
     return length(lcs)
 end
 
-"get lcs length on `runs` runs"
-function multiple_lcs_lengths(seq_length, runs, nb_chars)
+"get lcs length on `replicates` replicates"
+function multiple_lcs_lengths(seq_length, replicates, nb_chars)
     lcs_results = []
-    for _ in 1:runs
+    for _ in 1:replicates
         append!(lcs_results, get_lcs_length(seq_length, collect(1:nb_chars)))
     end
     return lcs_results
 end
 
-"compute moving averages"
+"""
+Generate a normal distribution with mean
+and standard deviation from mult_lcs_lengths
+"""
+function normal_distr_from(mult_lcs_lengths)
+    σ  = StatsBase.std(mult_lcs_lengths)
+    μ = mean(mult_lcs_lengths)
+    replicates = length(mult_lcs_lengths)
+    return [Int(round(length)) for length in rand(Normal(μ, σ), replicates)]
+end
+
+"compute moving averages overs results"
 function moving_averages(results)
     moving_averages = []
     for i in 1:length(results)
@@ -89,8 +102,8 @@ end
 
 "returns for each sequence length in
 `seq_lengths` the average lcs length"
-function compare_lcs_averages(seq_lengths, runs, nb_chars)
-    return Dict(len => mean(multiple_lcs_lengths(len, runs, nb_chars)) for len in seq_lengths)
+function compare_lcs_averages(seq_lengths, replicates, nb_chars)
+    return Dict(len => mean(multiple_lcs_lengths(len, replicates, nb_chars)) for len in seq_lengths)
 end
 
 "gets slope "
