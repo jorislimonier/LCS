@@ -48,13 +48,26 @@ end
 
 function lcs_length_distr(mult_lcs_lengths)
     plot = Plot()
-    addtraces!(plot, histogram(x=mult_lcs_lengths, weights=3))
+    hist = histogram(
+        x=mult_lcs_lengths,
+        opacity=.75,
+        name="Empirical occurences",
+    )
+    addtraces!(plot, hist)
+    hist_normal = histogram(
+        x=Sequences.normal_distr_from(mult_lcs_lengths),
+        opacity=0.5,
+        name="Normal fit",
+    )
+    addtraces!(plot, hist_normal)
     layout = Layout(
         title="Average LCS length comparison over multiple sequence lengths",
         xaxis_title="LCS length",
         yaxis_title="Number of occurences",
+        barmode="overlay"
     )
     relayout!(plot, layout)
+    
     return plot
 
 end
