@@ -1,5 +1,5 @@
-include("Sequences.jl")
-include("Visualization.jl")
+include("src/Sequences.jl")
+include("src/Visualization.jl")
 
 seq_length = 100
 seq_lengths = 0:50:200
@@ -13,7 +13,7 @@ moving_averages = Sequences.moving_averages(mult_lcs_lengths)
 # Visualization.ma_lcs_length(moving_averages, seq_length)
 
 # compare lcs averages
-plot_averages = Visualization.plot_average_lengths(lcs_av)
+# plot_averages = Visualization.plot_average_lengths(lcs_av)
 
-# norm_plot = Visualization.lcs_length_distr(mult_lcs_lengths)
+norm_plot = Visualization.lcs_length_distr(mult_lcs_lengths)
 

@@ -37,7 +37,7 @@ function plot_average_lengths(lcs_averages)
     relayout!(plot, Layout(
         title="Average LCS length comparison over multiple sequence lengths"),
         xaxis=attr(title="Sequence length"),
-        yaxis=attr(title="LCS length"),
+        yaxis=attr(title="Average LCS length"),
     )
     return plot
 end
@@ -45,6 +45,12 @@ end
 function lcs_length_distr(mult_lcs_lengths)
     plot = Plot()
     addtraces!(plot, histogram(x=mult_lcs_lengths, weights=3))
+    layout = Layout(
+        title="Average LCS length comparison over multiple sequence lengths",
+        xaxis_title="LCS length",
+        yaxis_title="Number of occurences",
+    )
+    relayout!(plot, layout)
     return plot
 
 end
