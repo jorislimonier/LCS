@@ -1,6 +1,7 @@
-\BOOKMARK [2][]{Outline0.1}{section one}{}% 1
-\BOOKMARK [3][]{Outline0.1.1.4}{subsection one}{Outline0.1}% 2
-\BOOKMARK [3][]{Outline0.1.2.9}{subsection two}{Outline0.1}% 3
-\BOOKMARK [2][]{Outline0.2}{section two}{}% 4
-\BOOKMARK [2][]{Outline0.3}{section three}{}% 5
-\BOOKMARK [2][]{Outline0.4}{section four}{}% 6
+\BOOKMARK [2][]{Outline0.1}{Introduction}{}% 1
+\BOOKMARK [3][]{Outline0.1.1.4}{What are LCS ?}{Outline0.1}% 2
+\BOOKMARK [3][]{Outline0.1.2.6}{Does it even matter ?}{Outline0.1}% 3
+\BOOKMARK [2][]{Outline0.2}{How to find LCS ?}{}% 4
+\BOOKMARK [3][]{Outline0.2.1.11}{Building the table}{Outline0.2}% 5
+\BOOKMARK [3][]{Outline0.2.2.13}{Crawling back up the table}{Outline0.2}% 6
+\BOOKMARK [2][]{Outline0.3}{Data analysis of LCS results}{}% 7
