@@ -1,6 +1,7 @@
-\beamer@sectionintoc {1}{section one}{3}{0}{1}
-\beamer@subsectionintoc {1}{1}{subsection one}{4}{0}{1}
-\beamer@subsectionintoc {1}{2}{subsection two}{9}{0}{1}
-\beamer@sectionintoc {2}{section two}{12}{0}{2}
-\beamer@sectionintoc {3}{section three}{14}{0}{3}
-\beamer@sectionintoc {4}{section four}{16}{0}{4}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{What are LCS ?}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Does it even matter ?}{6}{0}{1}
+\beamer@sectionintoc {2}{How to find LCS ?}{10}{0}{2}
+\beamer@subsectionintoc {2}{1}{Building the table}{11}{0}{2}
+\beamer@subsectionintoc {2}{2}{Crawling back up the table}{13}{0}{2}
+\beamer@sectionintoc {3}{Data analysis of LCS results}{15}{0}{3}

@@ -34,6 +34,11 @@ function plot_average_lengths(lcs_averages)
         name="slope $(round(slope, digits=3))"
     )
     addtraces!(plot, line_fit)
+    relayout!(plot, Layout(
+        title="Average LCS length comparison over multiple sequence lengths"),
+        xaxis=attr(title="Sequence length"),
+        yaxis=attr(title="LCS length"),
+    )
     return plot
 end
 
