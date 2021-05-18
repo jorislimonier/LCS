@@ -2,6 +2,7 @@ module Visualization
 
 using Random
 using PlotlyJS
+using Statistics
 include("Sequences.jl")
 
 """
@@ -71,7 +72,38 @@ function lcs_length_distr(mult_lcs_lengths, normal_fit, replicates)
     relayout!(plot, layout)
     
     return plot
+end
 
+"""
+Plots the difference between the normal samples and
+the empirical samples as proportion of the total number of replicates
+"""
+function evaluate_normal_fitness(replicates_values, seq_length, nb_chars, nb_repetitions, is_savefig=false)
+    plot = Plot()
+    fitnesses = []
+    for nb_rep in collect(replicates_values)
+        nb_rep_fitness = []
+        for i in 1:nb_repetitions
+            mult_lcs_lengths = Sequences.multiple_lcs_lengths(seq_length, nb_rep, nb_chars)
+            normal_fit = Sequences.normal_distr_from(mult_lcs_lengths)
+            append!(nb_rep_fitness, Sequences.normal_fitness(mult_lcs_lengths, normal_fit, nb_rep))
+        end
+        append!(fitnesses, mean(nb_rep_fitness))
+    end
+    scat = scatter(
+        x=replicates_values,
+        y=fitnesses,
+    )
+    addtraces!(plot, scat)
+    layout = Layout(
+        title="Mean absolute difference to Normal distribution (length $seq_length)",
+        xaxis_title="Number of replicates",
+        yaxis_title="Mean absolute error",
+        
+    )
+    relayout!(plot, layout)
+    is_savefig && savefig(plot, "fig/length$(seq_length)_replicates$(maximum(collect(replicates_values)))_repetitions$(nb_repetitions).png")
+    return plot
 end
 # end module
 end
