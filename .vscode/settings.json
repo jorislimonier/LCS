@@ -1,4 +1,5 @@
 {
     "editor.fontSize": 15,
-    "python.pythonPath": "/home/joris/julia-1.6.0/bin/julia"
+    "python.pythonPath": "/home/joris/julia-1.6.0/bin/julia",
+    "editor.wordWrap": "on"
 }

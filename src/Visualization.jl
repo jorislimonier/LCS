@@ -1,5 +1,6 @@
 module Visualization
 
+using Random
 using PlotlyJS
 include("Sequences.jl")
 
@@ -23,7 +24,7 @@ function ma_lcs_length(moving_averages, seq_length)
     return plot
 end
 
-function plot_average_lengths(lcs_averages)
+function plot_average_lengths_distr(lcs_averages)
     plot = Plot()
     sorted_keys = sort(collect(keys(lcs_averages)))
     y = [lcs_averages[key] for key in sorted_keys]
@@ -46,7 +47,8 @@ function plot_average_lengths(lcs_averages)
     return plot
 end
 
-function lcs_length_distr(mult_lcs_lengths, replicates)
+function lcs_length_distr(mult_lcs_lengths, normal_fit, replicates)
+    # Random.seed!(42)
     plot = Plot()
     hist = histogram(
         x=mult_lcs_lengths,
@@ -55,7 +57,7 @@ function lcs_length_distr(mult_lcs_lengths, replicates)
     )
     addtraces!(plot, hist)
     hist_normal = histogram(
-        x=Sequences.normal_distr_from(mult_lcs_lengths),
+        x=normal_fit,
         opacity=0.5,
         name="Normal fit",
     )
