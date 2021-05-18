@@ -1,9 +1,10 @@
 module Sequences
-# Random.seed!(42)
 
 using StatsBase
 using DataFrames
 using Distributions
+using Random
+# Random.seed!(42)
 
 mutable struct Sequence
     len::Int
@@ -77,7 +78,7 @@ function multiple_lcs_lengths(seq_length, replicates, nb_chars)
     for _ in 1:replicates
         append!(lcs_results, get_lcs_length(seq_length, collect(1:nb_chars)))
     end
-    return lcs_results
+    return Vector{Int}(lcs_results)
 end
 
 """
@@ -89,6 +90,16 @@ function normal_distr_from(mult_lcs_lengths)
     μ = mean(mult_lcs_lengths)
     replicates = length(mult_lcs_lengths)
     return [Int(round(length)) for length in rand(Normal(μ, σ), replicates)]
+end
+
+"""
+computes the l1-norm between the empirical LCS lengths and 
+a normal fitted curve, then normalizes for the number of replicates
+"""
+function normal_fitness(mult_lcs_lengths, normal_fit, replicates)
+    min_length, max_length = extrema(vcat(mult_lcs_lengths, normal_fit))
+    diff = [abs(count(==(length), normal_fit) - count(==(length), mult_lcs_lengths)) for length in min_length:max_length]
+    return sum(diff) / replicates
 end
 
 "compute moving averages overs results"
@@ -106,7 +117,8 @@ function compare_lcs_averages(seq_lengths, replicates, nb_chars)
     return Dict(len => mean(multiple_lcs_lengths(len, replicates, nb_chars)) for len in seq_lengths)
 end
 
-"gets slope "
+"""gets slope of the length of LCS
+as a function of sequence length"""
 function nbchar_slope(lcs_averages)
     ratios = []
     for key in keys(lcs_averages)
