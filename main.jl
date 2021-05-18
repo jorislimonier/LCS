@@ -25,38 +25,13 @@ norm_plot = Visualization.lcs_length_distr(mult_lcs_lengths, normal_fit, replica
 # ====== Compare LCS lengths distribution with Normal ======
 
 nb_rep = 500
-
 mult_lcs_lengths = Sequences.multiple_lcs_lengths(seq_length, nb_rep, nb_chars)
+normal_fit = Sequences.normal_distr_from(mult_lcs_lengths)
 Sequences.normal_fitness(mult_lcs_lengths, normal_fit, nb_rep)
 
-range = 100:100:500
 
-using PlotlyJS
-function evaluate_normal_fitness(range, seq_length, nb_chars)
-    plot = Plot()
-    nb_replicates = collect(range)
-    fitnesses = []
-    for nb_rep in nb_replicates
-        nb_rep_fitness = []
-        for i in 1:10
-            mult_lcs_lengths = Sequences.multiple_lcs_lengths(seq_length, nb_rep, nb_chars)
-            normal_fit = Sequences.normal_distr_from(mult_lcs_lengths)
-            append!(nb_rep_fitness, Sequences.normal_fitness(mult_lcs_lengths, normal_fit, nb_rep))
-        end
-        append!(fitnesses, mean(nb_rep_fitness))
-    end
-    scat = scatter(
-        x=nb_replicates,
-        y=fitnesses,
-    )
-    addtraces!(plot, scat)
-    return plot
-end
+replicates_values = vcat(collect(100:200:500), collect(750:250:2000))
+nb_repetitions = 1
 
-evaluate_normal_fitness(vcat(collect(100:100:500), collect(1000:500:2000)), seq_length, nb_chars)
-
-
-vcat(collect(100:100:500), collect(1000:500:2000))
-
-using Statistics
-mean([1, 2])
+fig = Visualization.evaluate_normal_fitness(replicates_values, seq_length, nb_chars, nb_repetitions)
+savefig(fig, "fig/testfig.png")
