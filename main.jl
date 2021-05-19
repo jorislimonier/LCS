@@ -30,8 +30,6 @@ normal_fit = Sequences.normal_distr_from(mult_lcs_lengths)
 Sequences.normal_fitness(mult_lcs_lengths, normal_fit, nb_rep)
 
 
-replicates_values = vcat(collect(100:200:500), collect(750:250:2000))
-nb_repetitions = 1
-
-fig = Visualization.evaluate_normal_fitness(replicates_values, seq_length, nb_chars, nb_repetitions)
-savefig(fig, "fig/testfig.png")
+replicates_values = vcat(collect(100:100:900), collect(1000:250:10000))
+nb_repetitions = 10
+fig = Visualization.evaluate_normal_fitness(replicates_values, seq_length, nb_chars, nb_repetitions, true)
