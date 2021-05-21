@@ -74,10 +74,7 @@ end
 
 "get lcs length on `replicates` replicates"
 function multiple_lcs_lengths(seq_length, replicates, nb_chars)
-    lcs_results = []
-    for _ in 1:replicates
-        append!(lcs_results, get_lcs_length(seq_length, collect(1:nb_chars)))
-    end
+    lcs_results = [get_lcs_length(seq_length, collect(1:nb_chars)) for _ in 1:replicates]
     return Vector{Int}(lcs_results)
 end
 
