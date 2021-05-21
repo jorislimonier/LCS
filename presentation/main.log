@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.4.11)  17 MAY 2021 07:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.4.11)  21 MAY 2021 09:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -750,11 +750,11 @@ Overfull \vbox (15.63992pt too high) detected at line 48
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (/home/joris/Documents/uni/seminar2/presentation/main.toc) [2
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 57.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 55.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 57.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 55.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [3
@@ -785,8 +785,6 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ] [16
 
-] [17
-
 ]
 \tf@nav=\write6
 \openout6 = `main.nav'.
@@ -797,27 +795,27 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@snm=\write8
 \openout8 = `main.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 90.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 90.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
  (/home/joris/Documents/uni/seminar2/presentation/main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 90.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 90.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 84.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 84.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 798EADE97A369E22942D703E111FB448;439.
+(rerunfilecheck)             Checksum: 00CCB266CF524305977467A62C28CF9E;497.
  ) 
 Here is how much of TeX's memory you used:
- 21031 strings out of 483107
- 419790 string characters out of 5964630
+ 21030 strings out of 483107
+ 419793 string characters out of 5964630
  653718 words of memory out of 5000000
  35513 multiletter control sequences out of 15000+600000
  540156 words of font info for 52 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  66i,13n,77p,1879b,770s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on /home/joris/Documents/uni/seminar2/presentation/main.pdf (17 pages, 54675 bytes).
+Output written on /home/joris/Documents/uni/seminar2/presentation/main.pdf (16 pages, 54221 bytes).
 PDF statistics:
- 179 PDF objects out of 1000 (max. 8388607)
- 148 compressed objects within 2 object streams
- 42 named destinations out of 1000 (max. 500000)
- 99 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 180 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 41 named destinations out of 1000 (max. 500000)
+ 107 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -5,18 +5,23 @@ include("src/Visualization.jl")
 # Random.seed!(42)
 
 seq_length = 100
-replicates = 2000
+replicates = 20
 nb_chars = 2
 mult_lcs_lengths = Sequences.multiple_lcs_lengths(seq_length, replicates, nb_chars)
 
+
+using StatsBase
+mean(mult_lcs_lengths)
+
+
 # # ====== Plot Moving Averages ======
-# moving_averages = Sequences.moving_averages(mult_lcs_lengths)
-# Visualization.ma_lcs_length(moving_averages, seq_length)
+moving_averages = Sequences.moving_averages(mult_lcs_lengths)
+Visualization.ma_lcs_length(moving_averages, seq_length)
 
 # # ====== Compare LCS average lengths ======
-# seq_lengths = 0:50:200
-# lcs_av = Sequences.compare_lcs_averages(seq_lengths, replicates, nb_chars)
-# plot_averages = Visualization.plot_average_lengths_distr(lcs_av)
+seq_lengths = 0:2500:10000
+lcs_av = Sequences.compare_lcs_averages(seq_lengths, replicates, nb_chars)
+plot_averages = Visualization.plot_average_lengths_distr(lcs_av)
 
 # ====== Histogram of LCS lengths ======
 normal_fit = Sequences.normal_distr_from(mult_lcs_lengths)
@@ -24,12 +29,12 @@ norm_plot = Visualization.lcs_length_distr(mult_lcs_lengths, normal_fit, replica
 
 # ====== Compare LCS lengths distribution with Normal ======
 
-nb_rep = 500
+nb_rep = 2000
 mult_lcs_lengths = Sequences.multiple_lcs_lengths(seq_length, nb_rep, nb_chars)
 normal_fit = Sequences.normal_distr_from(mult_lcs_lengths)
 Sequences.normal_fitness(mult_lcs_lengths, normal_fit, nb_rep)
 
 
-replicates_values = vcat(collect(100:100:900), collect(1000:250:10000))
-nb_repetitions = 10
+replicates_values = vcat(collect(100:400:2000))
+nb_repetitions = 2
 fig = Visualization.evaluate_normal_fitness(replicates_values, seq_length, nb_chars, nb_repetitions, true)
