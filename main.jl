@@ -1,6 +1,24 @@
 include("src/Sequences.jl")
 include("src/Visualization.jl")
 
+# ============ Slideshow ============
+nb_chars = 2
+s = Sequences.Sequence(256, ["A", "B"])
+X = Sequences.generate_sequence(s)
+Y = Sequences.generate_sequence(s)
+println(join(X))
+X = ["A", "A", "B", "A", "B"]
+Y = ["A", "B", "A", "B", "B"]
+
+
+T = Sequences.lcs_table(X, Y)
+LCS = Sequences.lcs_from_table(X, Y, T)
+X
+Y
+T
+
+# ============ Main code ============
+
 # using Random
 # Random.seed!(42)
 
