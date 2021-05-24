@@ -5,4 +5,7 @@ This work is about longest common subsequences (LCS)
 
 # TODO
 - [ ] Complete slides
+    - [X] Introduction
+    - [ ] Finding LCS
+    - [ ] Data Analysis
 - [ ] Download plots
