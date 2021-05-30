@@ -332,10 +332,10 @@
   \begin{tabular}{rccccccccccccc}
     \uncover<1->{
       \uncover<1-2>{\(S_1\):}
-              & \textcolor{magenta}{\textbf A}
-              & \textcolor{magenta}{\textbf B}
-              & \textcolor{magenta}{\textbf A}
-              & \textcolor{magenta}{\textbf B}
+              & \only<-3>{\textcolor{red}{\textbf A}} \only<4->{\textcolor{magenta}{\textbf A}}
+              & \only<-3>{\textcolor{red}{\textbf B}} \only<4->{\textcolor{magenta}{\textbf B}}
+              & \only<-3>{\textcolor{red}{\textbf A}} \only<4->{\textcolor{magenta}{\textbf A}}
+              & \only<-3>{\textcolor{red}{\textbf B}} \only<4->{\textcolor{magenta}{\textbf B}}
               & \only<-3>{B} \only<4>{\textcolor{magenta}{\textbf B}}
     }
     \only<2>{ &                                                                                 &  & \(S_3\): & }
@@ -345,17 +345,30 @@
     }                                                                                                             \\
     \uncover<1->{
       \uncover<1-2>{\(S_2\):}
-              & \textcolor{magenta}{\textbf A}
+              & \only<-3>{\textcolor{red}{\textbf A}} \only<4->{\textcolor{magenta}{\textbf A}}
               & A
-              & \textcolor{magenta}{\textbf B}
-              & \textcolor{magenta}{\textbf A}
-              & \textcolor{magenta}{\textbf B}
+              & \only<-3>{\textcolor{red}{\textbf B}} \only<4->{\textcolor{magenta}{\textbf B}}
+              & \only<-3>{\textcolor{red}{\textbf A}} \only<4->{\textcolor{magenta}{\textbf A}}
+              & \only<-3>{\textcolor{red}{\textbf B}} \only<4->{\textcolor{magenta}{\textbf B}}
     }
     \only<2>{ &                                                                                 &  & \(S_4\): & }
     \uncover<2->{
       \only<-3>{B} \only<4>{\textcolor{magenta}{\textbf B}}
               & \only<-3>{\textcolor{blue}{\textbf A}} \only<4>{\textcolor{magenta}{\textbf A}}
     }
+  \end{tabular}\\[1cm]
+  % \vspace{1cm}
+  \begin{tabular}{ccccccccccc}
+    LCS:
+    \only<-3>{  & \hspace{.5cm} \textcolor{red}{\textbf{ABAB}}}
+    \only<2>{   & \hspace{1.7cm}}
+    \only<2-3>{ & \hspace{1cm} \textcolor{blue}{\textbf{A}}}
+    \only<4>{   & \hspace{1cm} \textcolor{magenta}{\textbf{ABABBA}}} \\
+    Length:
+    \only<-3>{  & \hspace{.5cm} \textcolor{red}{\textbf{4}}}
+    \only<2>{   & \hspace{1.7cm}}
+    \only<2-3>{ & \hspace{1cm} \textcolor{blue}{\textbf{1}}}
+    \only<4>{   & \hspace{1cm} \textcolor{magenta}{\textbf{6}}}
   \end{tabular}
 
 \end{frame}
