@@ -191,7 +191,7 @@
         \hline
         A             & 0             & \only{1}<2->  & \only{1}<3->  & \only{1}<4->  & \only{1}<5->  & \only{1}<6->  \\
         \hline
-        A             & 0             & \only{1}<7->  & \only{1}<8->  & \only{2}<9-> & \only{2}<10-> & \only{2}<10-> \\
+        A             & 0             & \only{1}<7->  & \only{1}<8->  & \only{2}<9->  & \only{2}<10-> & \only{2}<10-> \\
         \hline
         B             & 0             & \only{1}<11-> & \only{2}<11-> & \only{2}<11-> & \only{3}<11-> & \only{3}<11-> \\
         \hline
@@ -219,66 +219,66 @@
     \begin{multicols}{2}
       \begin{tabular}{|c|c|c|c|c|c|c|}
         \hline
-                                                                &
-        $\varnothing$                                           &
-        A                                                       &
-        B                                                       &
-        A                                                       &
-        B                                                       &
+                                                               &
+        $\varnothing$                                          &
+        A                                                      &
+        B                                                      &
+        A                                                      &
+        B                                                      &
         B
         \\
         \hline
-        $\varnothing$                                           &
+        $\varnothing$                                          &
         \only{0}<-8> \only{\textcolor{pink}{\textbf 0}}<9->    &
-        0                                                       &
-        0                                                       &
-        0                                                       &
-        0                                                       &
+        0                                                      &
+        0                                                      &
+        0                                                      &
+        0                                                      &
         0
         \\
         \hline
-        A                                                       &
-        0                                                       &
-        \only{1}<-7>\only{\textcolor{magenta}{\textbf 1}}<8->     &
-        1                                                       &
-        1                                                       &
-        1                                                       &
+        A                                                      &
+        0                                                      &
+        \only{1}<-7>\only{\textcolor{magenta}{\textbf 1}}<8->  &
+        1                                                      &
+        1                                                      &
+        1                                                      &
         1
         \\
         \hline
-        A                                                       &
-        0                                                       &
-        \only{1}<-6> \only{\textcolor{pink}{\textbf 1}}<7-> &
-        1                                                       &
-        2                                                       &
-        2                                                       &
+        A                                                      &
+        0                                                      &
+        \only{1}<-6> \only{\textcolor{pink}{\textbf 1}}<7->    &
+        1                                                      &
+        2                                                      &
+        2                                                      &
         2
         \\
         \hline
-        B                                                       &
-        0                                                       &
-        1                                                       &
+        B                                                      &
+        0                                                      &
+        1                                                      &
         \only{2}<-5> \only{\textcolor{magenta}{\textbf 2}}<6-> &
-        2                                                       &
-        3                                                       &
+        2                                                      &
+        3                                                      &
         3
         \\
         \hline
-        A                                                       &
-        0                                                       &
-        1                                                       &
-        2                                                       &
+        A                                                      &
+        0                                                      &
+        1                                                      &
+        2                                                      &
         \only{3}<-4> \only{\textcolor{magenta}{\textbf 3}}<5-> &
-        3                                                       &
+        3                                                      &
         3
         \\
 
         \hline
-        B                                                       &
-        0                                                       &
-        1                                                       &
-        2                                                       &
-        3                                                       &
+        B                                                      &
+        0                                                      &
+        1                                                      &
+        2                                                      &
+        3                                                      &
         \only{4}<-3> \only{\textcolor{magenta}{\textbf 4}}<4-> &
         \only{4}<-2> \only{\textcolor{pink}{\textbf 4}}<3->
         \\
@@ -290,10 +290,10 @@
          &                                                           &  &  &  & \\
          &                                                           &  &  &  & \\
           LCS :
-         & \only<1-6>{\_\_}\only<7->{\textcolor{magenta}{\textbf A}}
-         & \only<1-5>{\_\_}\only<6->{\textcolor{magenta}{\textbf B}}
-         & \only<1-4>{\_\_}\only<5->{\textcolor{magenta}{\textbf A}}
-         & \only<1-3>{\_\_}\only<4->{\textcolor{magenta}{\textbf B}}
+         & \only<1-8>{\_\_}\only<9->{\textcolor{magenta}{\textbf A}}
+         & \only<1-6>{\_\_}\only<7->{\textcolor{magenta}{\textbf B}}
+         & \only<1-5>{\_\_}\only<6->{\textcolor{magenta}{\textbf A}}
+         & \only<1-4>{\_\_}\only<5->{\textcolor{magenta}{\textbf B}}
         }                                                                       \\
       \end{tabular}
     \end{multicols}
@@ -302,14 +302,91 @@
 
 \section{Data analysis of LCS results}
 \subsection{Average LCS length}
-\subsection{Normal fit}
+
+\begin{frame}[standout]
+  \begin{block}{Question}
+    Given two sequences of the same length, what percentage do they have in common ?
+  \end{block}
+  \vspace{1cm}
+  \uncover<2->{
+    Answer: \(\approx 80\%\)
+  }
+\end{frame}
 
 \begin{frame}
+  \includegraphics[width=\textwidth]{img/lcs_length_ma.png}
+\end{frame}
 
+\begin{frame}{Superadditivity}
+  Let \(L_n\) be the length of the LCS between two sequences of length \(n\). \\[.5cm]
+  \begin{block}{Proposition}
+    \(\left( \mathbb{E}[L_n] \right)_{n \geq 1}\) is a superadditive sequence, that is
+    \[
+      \mathbb{E}[L_{m+n}] \geq \mathbb{E}[L_{m}] + \mathbb{E}[L_{n}]
+    \]
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \textbf{Intuition:} \\[1cm]
+  \begin{tabular}{rccccccccccccc}
+    \uncover<1->{
+      \uncover<1-2>{\(S_1\):}
+              & \textcolor{magenta}{\textbf A}
+              & \textcolor{magenta}{\textbf B}
+              & \textcolor{magenta}{\textbf A}
+              & \textcolor{magenta}{\textbf B}
+              & \only<-3>{B} \only<4>{\textcolor{magenta}{\textbf B}}
+    }
+    \only<2>{ &                                                                                 &  & \(S_3\): & }
+    \uncover<2->{
+      \only<-3>{\textcolor{blue}{\textbf A}} \only<4>{\textcolor{magenta}{\textbf A}}
+              & B
+    }                                                                                                             \\
+    \uncover<1->{
+      \uncover<1-2>{\(S_2\):}
+              & \textcolor{magenta}{\textbf A}
+              & A
+              & \textcolor{magenta}{\textbf B}
+              & \textcolor{magenta}{\textbf A}
+              & \textcolor{magenta}{\textbf B}
+    }
+    \only<2>{ &                                                                                 &  & \(S_4\): & }
+    \uncover<2->{
+      \only<-3>{B} \only<4>{\textcolor{magenta}{\textbf B}}
+              & \only<-3>{\textcolor{blue}{\textbf A}} \only<4>{\textcolor{magenta}{\textbf A}}
+    }
+  \end{tabular}
+
+\end{frame}
+
+\begin{frame}
+  \includegraphics[width=\textwidth]{img/lcs_lengths_comparison.png}
+\end{frame}
+
+\subsection{Normal fit}
+\begin{frame}
+  \includegraphics[width=\textwidth]{img/comparison_normal_rep10.png}
+\end{frame}
+
+\begin{frame}
+  \includegraphics[width=\textwidth]{img/comparison_normal_rep100.png}
+\end{frame}
+
+\begin{frame}
+  \includegraphics[width=\textwidth]{img/comparison_normal_rep1000.png}
+\end{frame}
+
+\begin{frame}
+  \includegraphics[width=\textwidth]{img/diff_to_normal.png}
 \end{frame}
 
 \begin{frame}[standout]
   Thank you
+  \vfill
+  Questions?
+  \vfill
+  \text{\small https://github.com/jorislimonier/LCS}
 \end{frame}
 
 \end{document}
