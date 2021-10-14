@@ -1,9 +1,0 @@
-\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
-\beamer@subsectionintoc {1}{1}{What are LCS ?}{4}{0}{1}
-\beamer@subsectionintoc {1}{2}{Why are we interested in LCS ?}{17}{0}{1}
-\beamer@sectionintoc {2}{How to find LCS ?}{22}{0}{2}
-\beamer@subsectionintoc {2}{1}{Step A: Building the table}{23}{0}{2}
-\beamer@subsectionintoc {2}{2}{Step B: Crawling back up the table}{41}{0}{2}
-\beamer@sectionintoc {3}{Data analysis of LCS results}{51}{0}{3}
-\beamer@subsectionintoc {3}{1}{Average LCS length}{52}{0}{3}
-\beamer@subsectionintoc {3}{2}{Normal fit}{62}{0}{3}
